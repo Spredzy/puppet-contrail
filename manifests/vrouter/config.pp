@@ -4,6 +4,8 @@ class contrail::vrouter::config (
   $device                 = 'eth0',
   $compute_device         = 'eth0',
   $mask                   = '24',
+  $netmask                = '255.255.255.0',
+  $gateway                = '127.0.0.1',
   $vgw_public_subnet      = undef,
   $vgw_interface          = undef,
   $macaddr                = $::macaddress,
@@ -11,7 +13,6 @@ class contrail::vrouter::config (
   $vrouter_nodemgr_config = {},
 ) {
 
-  include ::contrail::vrouter::provision_vrouter
   include ::contrail::vnc_api
   include ::contrail::ctrl_details
   include ::contrail::service_token
@@ -42,9 +43,9 @@ class contrail::vrouter::config (
                  --vhost_ip $vhost_ip \
                  --dev $device \
                  --compute_dev $device \
-                 --netmask $compute_device \
+                 --netmask $netmask \
                  --gateway $gateway \
-                 --cidr ${vhost_oip}/${mask} \
+                 --cidr ${vhost_ip}/${mask} \
                  --mac $macaddr"
   }
 
