@@ -1,0 +1,10 @@
+LOG=/var/log/contrail.log
+CONFIG=/etc/contrail/agent.conf
+prog=/usr/bin/vnswad
+kmod=vrouter
+pname=vnswad
+LIBDIR=/usr/lib64
+DEVICE=vhost0
+dev=<%= @device %>
+vgw_subnet_ip=<%= @vgw_public_subnet %>
+vgw_interface=<%= @vgw_interface %>
