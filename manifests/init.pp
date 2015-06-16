@@ -32,6 +32,11 @@
 # Copyleft 2013 Sebastien Badia.
 # See LICENSE file.
 #
-class contrail {
-  #code...
-} # Class:: contrail
+class contrail (
+  $vnc_api_config = {},
+) {
+
+  validate_hash($vnc_api_config)
+
+  create_resources('contrail_vnc_api_config', $vnc_api_config)
+}
